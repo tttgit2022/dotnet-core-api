@@ -10,8 +10,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: CopyPublishBuildArtifacts@1
+- task: ArchiveFiles@2
   inputs:
-    CopyRoot: '**'
-    ArtifactName: 'dotnetapp'
-    ArtifactType: 'Container'
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
