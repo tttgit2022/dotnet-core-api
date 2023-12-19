@@ -13,8 +13,10 @@ steps:
 #- task: DotNetCoreCLI@2
 #  inputs:
 #    command: 'build'
-- task: CopyPublishBuildArtifacts@1
+- task: ArchiveFiles@2
   inputs:
-    CopyRoot: 'www'
-    ArtifactName: 'dotnetapp'
-    ArtifactType: 'Container'
+    rootFolderOrFile: '$(Build.BinariesDirectory)/www'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
