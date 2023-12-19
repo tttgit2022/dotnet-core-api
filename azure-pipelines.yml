@@ -17,4 +17,4 @@ steps:
   inputs:
     CopyRoot: '.'
     ArtifactName: 'dotnetapp'
-    ArtifactType: 'FilePath'
+    ArtifactType: 'Container'
